@@ -8,7 +8,7 @@
     "deploy": "npx prisma migrate deploy",
     "dev": "npm run generate && ts-node server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rimraf ./dist && tsc && npm run generate",
+    "build": "rimraf ./dist && tsc && prisma generate",
     "start": "npm run build && node dist/server.js",
     "dev2": "nodemon --exec ts-node server.ts",
     "dev3": "ts-node server.ts",
