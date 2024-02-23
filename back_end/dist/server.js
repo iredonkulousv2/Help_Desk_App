@@ -12,15 +12,19 @@ const cors = require('cors');
 const app = (0, express_1.default)();
 const port = 3000;
 const corsOptions = {
-    origin: 'http://localhost:5173',
+    origin: '*',
 };
 app.use(cors(corsOptions));
 app.use(express_1.default.urlencoded({ extended: false }));
 app.use(express_1.default.json());
 app.use(cookieParser());
+app.get('/', (req, res) => {
+    return res.send('express typescript on vercel');
+});
 app.use('/login', adminRouter);
 app.use('/api/tickets', ticketsRouter);
 app.listen(port, () => {
     return console.log(`Express is listening at http://localhost:${port}`);
 });
+module.exports = app;
 //# sourceMappingURL=server.js.map
