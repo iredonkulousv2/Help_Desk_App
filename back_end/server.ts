@@ -19,15 +19,16 @@ app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 app.use(cookieParser())
 
+
+app.use('/login', adminRouter)
+app.use('/api/tickets', ticketsRouter)
+
 app.get('/admin', (req,res) => {
   return res.send('admin dashboard')
 })
 app.get('/', (req,res) => {
   return res.send('express typescript on vercel@@@')
 })
-
-app.use('/login', adminRouter)
-app.use('/api/tickets', ticketsRouter)
 
 app.listen(port, () => {
   return console.log(`Express is listening at http://localhost:${port}`);
