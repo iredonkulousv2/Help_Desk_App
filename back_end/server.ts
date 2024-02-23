@@ -20,7 +20,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 app.get('/', (req,res) => {
-  return res.send('express typescript on vercel')
+  return res.send('express typescript on vercel@@@')
 })
 app.use('/login', adminRouter)
 app.use('/api/tickets', ticketsRouter)
