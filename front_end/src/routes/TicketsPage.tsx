@@ -10,11 +10,12 @@ const TicketsPage = () => {
   const navigate = useNavigate()
   const location = useLocation();
    
-
+  // process.env.BACK_END_URL
+  // help-desk-8mkfszu53-iredonkulousv2s-projects.vercel.app
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/tickets', {
+        const response = await axios.get(`http://localhost:3000/api/tickets`, {
           headers: {
             'Authorization': location.state?.id
           }
