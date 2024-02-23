@@ -19,13 +19,11 @@ const router = createBrowserRouter([
   {
     path:'/tickets',
     element: <TicketsPage />,
-    errorElement: <ErrorPage />,
 
   },
   {
     path:'/tickets/:id',
     element: <TicketPage />,
-    errorElement: <ErrorPage />,
 
   }
  
