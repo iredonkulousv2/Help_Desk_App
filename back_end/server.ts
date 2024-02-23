@@ -22,6 +22,9 @@ app.use(cookieParser())
 app.get('/', (req,res) => {
   return res.send('express typescript on vercel@@@')
 })
+app.get('/admin', (req,res) => {
+  return res.send('admin dashboard')
+})
 app.use('/login', adminRouter)
 app.use('/api/tickets', ticketsRouter)
 
