@@ -3,6 +3,8 @@ import { useState, useEffect, FormEvent, ChangeEvent } from 'react'
 import axios from 'axios';
 import { Card, TextField, Button, Select, InputLabel, MenuItem } from '@mui/material';
 import { useNavigate, useLocation, Link } from 'react-router-dom'
+import { SelectChangeEvent } from '@mui/material';
+
 
 
 import { Ticket } from '../types';
@@ -26,7 +28,7 @@ const TicketPage = () => {
       status: '',
     });
 
-    const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | { name?: string; value: unknown }>) => {
+    const handleInputChange = (e:  SelectChangeEvent<string> | ChangeEvent<HTMLInputElement | HTMLTextAreaElement> ) => {
       const { name, value } = e.target;
       setEditData(prevState => ({
           ...prevState,
