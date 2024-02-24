@@ -1,7 +1,7 @@
 import express from 'express'
 const router = express.Router();
-const ticketsController = require('../../controllers/ticketsController')
-const {isAdmin} = require('../../middleware/isAdmin')
+const ticketsController = require('../controllers/ticketsController')
+const {isAdmin} = require('../middleware/isAdmin')
 
 router.route('/')
     .get(isAdmin, ticketsController.getAllTickets)

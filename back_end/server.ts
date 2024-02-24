@@ -1,8 +1,8 @@
 require('dotenv').config();
 import express from 'express';
 const cookieParser = require('cookie-parser');
-const ticketsRouter = require('./routes/api/tickets');
-const adminRouter = require('./routes/api/admin');
+const ticketsRouter = require('./routes/tickets');
+const adminRouter = require('./routes/admin');
 
 
 const cors = require('cors')
