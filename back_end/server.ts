@@ -26,9 +26,9 @@ app.use(cookieParser())
 // app.get('/admin', (req,res) => {
 //   return res.send('admin dashboard')
 // })
-// app.get('/', (req,res) => {
-//   return res.send('express typescript on vercel@@@')
-// })
+app.get('/', (req,res) => {
+  return res.send('express typescript on vercel@@@')
+})
 
 app.listen(port, () => {
   return console.log(`Express is listening at http://localhost:${port}`);
