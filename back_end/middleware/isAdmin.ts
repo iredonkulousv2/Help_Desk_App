@@ -1,5 +1,7 @@
-import { Request, Response, NextFunction } from 'express';
-import prisma from '../utils/db'
+import { NextFunction, Request, Response } from 'express';
+
+import prisma from '../utils/db';
+
 const isAdmin = async (req: Request, res: Response, next: NextFunction) => {
     const sessionId = req.headers.authorization;
 

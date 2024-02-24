@@ -1,7 +1,8 @@
-import { useState, ChangeEvent, FormEvent} from 'react';
-import { Link } from 'react-router-dom';
-import { Card, TextField, Typography, Button } from '@mui/material';
 import axios from 'axios';
+import { ChangeEvent, FormEvent, useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import { Button, Card, TextField, Typography } from '@mui/material';
 
 interface FormData {
   name: string;
@@ -30,7 +31,7 @@ const HomePage = () => {
     e.preventDefault();
     
     try {
-      const response = await axios.post('http://localhost:3000/api/tickets', formData);
+      const response = await axios.post('/api/tickets', formData);
     
      
       setFormData({

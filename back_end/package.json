@@ -7,11 +7,10 @@
     "generate": "npx prisma generate",
     "deploy": "npx prisma migrate deploy",
     "dev": "npm run generate && ts-node server.ts",
-    "build": "prisma generate && rimraf ./dist && tsc",
+    "build": "tsc",
     "start": "npm run build && node dist/server.js",
     "ts.check": "tsc --project tsconfig.json",
-    "add-build": "git add dist",
-    "postinstall": "prisma generate"
+    "add-build": "git add dist"
   },
   "prisma": {
     "schema": "prisma/schema.prisma"

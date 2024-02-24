@@ -1,8 +1,8 @@
-import { Card } from "@mui/material"
-import axios from "axios"
-import { useNavigate } from "react-router-dom";
-import {Button, TextField} from '@mui/material'
-import {useState, FormEvent} from 'react'
+import axios from 'axios';
+import { FormEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { Button, Card, TextField } from '@mui/material';
 
 interface LoginData {
     user: string;
@@ -28,7 +28,8 @@ const LoginPage = () => {
         e.preventDefault()
    
         try {
-            const response = await axios.post('http://localhost:3000/login', loginData); 
+            const response = await axios.post('api/login', loginData); 
+            // console.log('sessionId',response.data.sessionId)
             navigate('/tickets', {state:{id: response.data.sessionId}})
             }
         catch (error) {

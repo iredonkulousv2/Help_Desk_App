@@ -1,0 +1,4 @@
+**/node_modules/
+**/dist/
+/back_end/prisma/dev.db
+/back_end/prisma/migrations/

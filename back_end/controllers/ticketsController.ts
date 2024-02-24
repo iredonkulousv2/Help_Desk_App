@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
-import prisma from '../utils/db'
+
+import prisma from '../utils/db';
+
 const createTicket = async (req: Request, res: Response ) => {
 
    const {name,email,description} = req.body

@@ -1,9 +1,11 @@
-import TicketCard from "../components/TicketCard"
-import { useEffect, useState } from "react"
-import axios from "axios"
-import { useNavigate, useLocation, Link } from "react-router-dom";
-import {Button} from '@mui/material'
-import { Ticket } from "../types";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+import { Button } from '@mui/material';
+
+import TicketCard from '../components/TicketCard';
+import { Ticket } from '../types';
 
 const TicketsPage = () => {
   const [tickets, setTickets] = useState<Ticket[]>([])
@@ -15,7 +17,7 @@ const TicketsPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/tickets`, {
+        const response = await axios.get(`api/tickets`, {
           headers: {
             'Authorization': location.state?.id
           }

@@ -1,11 +1,10 @@
-import { useParams } from 'react-router-dom';
-import { useState, useEffect, FormEvent, ChangeEvent } from 'react'
 import axios from 'axios';
-import { Card, TextField, Button, Select, InputLabel, MenuItem } from '@mui/material';
-import { useNavigate, useLocation, Link } from 'react-router-dom'
-import { SelectChangeEvent } from '@mui/material';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 
-
+import {
+    Button, Card, InputLabel, MenuItem, Select, SelectChangeEvent, TextField
+} from '@mui/material';
 
 import { Ticket } from '../types';
 
@@ -40,7 +39,7 @@ const TicketPage = () => {
           const fetchData = async () => {
           
             try {
-              const response = await axios.get(`http://localhost:3000/api/tickets/${id}`, {
+              const response = await axios.get(`/api/tickets/${id}`, {
                 headers: {
                   'Authorization': location.state.id   
                 }
@@ -65,7 +64,7 @@ const TicketPage = () => {
             e.preventDefault()
            
             try {
-                const data = await axios.patch(`http://localhost:3000/api/tickets/${id}`, editData,   
+                const data = await axios.patch(`/api/tickets/${id}`, editData,   
                 {
                   headers: {
                     'Authorization': location.state.id
