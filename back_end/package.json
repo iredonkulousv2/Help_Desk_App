@@ -7,11 +7,8 @@
     "generate": "npx prisma generate",
     "deploy": "npx prisma migrate deploy",
     "dev": "npm run generate && ts-node server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "prisma generate && rimraf ./dist && tsc",
     "start": "npm run build && node dist/server.js",
-    "dev2": "nodemon --exec ts-node server.ts",
-    "dev3": "ts-node server.ts",
     "ts.check": "tsc --project tsconfig.json",
     "add-build": "git add dist",
     "postinstall": "prisma generate"
