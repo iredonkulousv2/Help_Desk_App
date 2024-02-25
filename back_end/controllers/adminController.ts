@@ -25,6 +25,4 @@ const checkAdmin = async (req: Request, res: Response) => {
     }
 };
 
-module.exports = {
-    checkAdmin,
-}
+export default checkAdmin

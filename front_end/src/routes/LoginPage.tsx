@@ -30,7 +30,11 @@ const LoginPage = () => {
         try {
             const response = await axios.post('api/login', loginData); 
             // console.log('sessionId',response.data.sessionId)
-            navigate('/tickets', {state:{id: response.data.sessionId}})
+            if(!response.data.sessionId){
+                navigate('/')
+            } else {
+                navigate('/tickets', {state:{id: response.data.sessionId}})
+            }
             }
         catch (error) {
             console.error('Error_Message:', error);

@@ -5,7 +5,7 @@ FROM base as frontend
 WORKDIR /usr/src/app
 COPY front_end/package*.json .
 RUN npm install
-COPY  front_end .
+COPY front_end .
 RUN npm run build
 
 # Get backend

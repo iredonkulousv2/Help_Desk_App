@@ -32,4 +32,4 @@ const isAdmin = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 
-module.exports = {isAdmin}
+export default isAdmin;

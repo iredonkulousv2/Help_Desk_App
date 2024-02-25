@@ -1,9 +1,9 @@
 import express from 'express'
 const router = express.Router();
-const adminController = require('../controllers/adminController')
+import checkAdmin from '../controllers/adminController'
 
 router.route('/')
-    .post(adminController.checkAdmin)
+    .post(checkAdmin)
    
 
 module.exports = router;

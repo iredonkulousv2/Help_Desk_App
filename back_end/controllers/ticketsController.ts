@@ -12,9 +12,7 @@ const createTicket = async (req: Request, res: Response ) => {
             description
         }
     })
-    //console.log('created new Ticket', newTicket)
-    console.log('body',req.body)
-  
+
     res.json(newTicket).status(200)
 }
 

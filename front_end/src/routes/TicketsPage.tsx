@@ -12,8 +12,7 @@ const TicketsPage = () => {
   const navigate = useNavigate()
   const location = useLocation();
    
-  // process.env.BACK_END_URL
-  // help-desk-8mkfszu53-iredonkulousv2s-projects.vercel.app
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
