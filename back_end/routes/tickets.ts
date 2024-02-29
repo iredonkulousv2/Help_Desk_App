@@ -10,5 +10,6 @@ router.route('/')
 router.route('/:id')
     .get(isAdmin,ticketsController.getTicketById)
     .patch(isAdmin,ticketsController.editTicket)
+    .delete(isAdmin,ticketsController.deleteTicketById)
 
 module.exports = router;

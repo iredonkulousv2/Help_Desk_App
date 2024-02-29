@@ -6,7 +6,7 @@
   "scripts": {
     "generate": "npx prisma generate",
     "deploy": "npx prisma migrate deploy",
-    "dev": "npm run generate && ts-node server.ts",
+    "dev": "npm run generate && ts-node devServer.ts",
     "build": "tsc",
     "start": "npm run build && node dist/server.js",
     "ts.check": "tsc --project tsconfig.json",
