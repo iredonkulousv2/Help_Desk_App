@@ -6,9 +6,9 @@ import { Ticket } from '../types';
 import StatusCard from './StatusCard';
 import SideBar from './Sidebar';
 
-const TicketContainer = () => {
+const TicketContainer = ({selectedStatus, setSelectedStatus}) => {
   const [tickets, setTickets] = useState<Ticket[]>([]);
-  const [selectedStatus, setSelectedStatus] = useState<string>('New');
+  const [isMobile, setIsMobile] = useState<boolean>(false); 
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -34,6 +34,12 @@ const TicketContainer = () => {
 
   useEffect(() => {
     getData();
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 600);
+    };
+    window.addEventListener('resize', handleResize);
+    handleResize(); 
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const newTickets = tickets.filter(ticket => ticket.status === 'New');
@@ -46,7 +52,9 @@ const TicketContainer = () => {
   return (
     <>
       <div style={{ display: 'flex' }}>
-        <SideBar handleStatusChange={setSelectedStatus} />
+
+      {!isMobile && <SideBar setSelectedStatus={setSelectedStatus} />}
+
         <div style={{ display: 'flex', flexDirection: 'column', flex: '1', minHeight: '100vh' }}>
           <div style={{ display: 'flex', flexDirection: 'row',  backgroundColor: '#e0e0e0',maxHeight: '10rem', width: '100%' }}>
             <StatusCard status='New' count={newTickets.length} color='#b71c1c'/>

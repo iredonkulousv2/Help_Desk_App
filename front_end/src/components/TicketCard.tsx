@@ -8,6 +8,7 @@ import { TicketCardProps } from '../types';
 
 
 const TicketCard: React.FC<TicketCardProps> = ({ ticket, getData }) => {
+  
   const { id: ticketId, name, email, description, status, response } = ticket;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,6 +16,7 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket, getData }) => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
   const location = useLocation();
+  console.log('location', location.state.id)
 
   const statusStyle = {
     color: status === 'Resolved' ? 'green' : status === 'In Progress' ? 'orange' : 'red',
@@ -28,6 +30,7 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket, getData }) => {
   };
 
   const handleDelete = async (id: string) => {
+    console.log('inside handledelete', location.state.id)
     try {
       const data = await axios.delete(`/api/tickets/${id}`,    
       {

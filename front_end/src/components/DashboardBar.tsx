@@ -1,18 +1,61 @@
-import { AppBar, Box, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Toolbar, Typography, Button } from '@mui/material';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-import LogOutButton from './LogOutButton';
+import {useState, useEffect} from 'react'
 
 
-const DashboardBar = () => {
+const DashboardBar = ({setSelectedStatus}) => {
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  
+  useEffect(() => {
+    
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 600);
+    };
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const handleClick = (status: string) => {
+    setSelectedStatus(status);
+  };
+
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100vw' }}>
       <AppBar position="static">
         <Toolbar>
           <AdminPanelSettingsIcon />
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, marginLeft: 1 }}>
+          {!isMobile ?
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1, marginLeft: 1, fontSize: '1.2rem' }}>
             Admin Dashboard
-          </Typography>
-          <LogOutButton />
+          </Typography> : 
+
+            <div style={{ fontSize: '1.2rem', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', }}>
+            {['New','In Progress', 'Resolved', 'All']
+              .map(text => (
+                <Button variant="contained"
+                color="secondary" 
+                key={text}
+                sx={{
+                  ml: 2,
+                  backgroundColor: 'transparent', 
+                  border: 'none',
+                  boxShadow: 'none',
+                  '&:hover': { 
+                    backgroundColor: 'rgba(255, 0, 0, 0.2)',
+                  },
+                  '& .MuiButton-label': { 
+                    color: 'inherit', 
+                  },
+                }}
+                onClick={() => handleClick(text)}
+                >{text}</Button>
+              ))
+            }
+            </div>
+          
+        } 
+         
         </Toolbar>
       </AppBar>
     </Box>
