@@ -5,6 +5,7 @@ import TicketCard from '../components/TicketCard';
 import { Ticket } from '../types';
 import StatusCard from './StatusCard';
 import SideBar from './Sidebar';
+import { Typography } from '@mui/material';
 
 const TicketContainer = ({selectedStatus, setSelectedStatus}) => {
   const [tickets, setTickets] = useState<Ticket[]>([]);
@@ -56,15 +57,19 @@ const TicketContainer = ({selectedStatus, setSelectedStatus}) => {
       {!isMobile && <SideBar setSelectedStatus={setSelectedStatus} />}
 
         <div style={{ display: 'flex', flexDirection: 'column', flex: '1', minHeight: '100vh' }}>
-          <div style={{ display: 'flex', flexDirection: 'row',  backgroundColor: '#e0e0e0',maxHeight: '10rem', width: '100%' }}>
-            <StatusCard status='New' count={newTickets.length} color='#b71c1c'/>
-            <StatusCard status='In Progress' count={inProgressTickets.length} color='orange'/>
-            <StatusCard status='Resolved' count={resolvedTickets.length} color='#2e7d32'/> 
+          <div style={{ display: 'flex', flexDirection: 'row',  backgroundColor: '#e3f2fd',maxHeight: '10rem', width: '100%' }}>
+            <StatusCard status='New' count={newTickets.length} color='#ab47bc'/>
+            <StatusCard status='In Progress' count={inProgressTickets.length} color='#ce93d8'/>
+            <StatusCard status='Resolved' count={resolvedTickets.length} color='#f3e5f5'/> 
           </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', backgroundColor: '#e0e0e0', height:'100%' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', backgroundColor: '#e3f2fd', height:'100%' }}>
           {filteredTickets.length > 0 ? filteredTickets.map(ticket => (
-                      <TicketCard key={ticket.id} ticket={ticket} getData={getData} />
-                    )) : <h1>No {selectedStatus === 'All' ? '' : selectedStatus} Tickets To Display</h1>}
+              <TicketCard key={ticket.id} ticket={ticket} getData={getData} />
+                    )) : 
+              <Typography variant="h3"  style={{ color: '#708090' }}>
+                  No {selectedStatus === 'All' ? '' : selectedStatus} Tickets To Display
+              </Typography>
+              }
           </div>
         </div>
       </div>

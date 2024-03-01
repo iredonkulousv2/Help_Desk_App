@@ -16,10 +16,9 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket, getData }) => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
   const location = useLocation();
-  console.log('location', location.state.id)
 
   const statusStyle = {
-    color: status === 'Resolved' ? 'green' : status === 'In Progress' ? 'orange' : 'red',
+    color: status === 'Resolved' ? '#ce93d8' : '#ab47bc'
   };
 
   const shortenText = (text: string, maxLength: number) => {
@@ -90,7 +89,7 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket, getData }) => {
         </div>
         <div style={{ position: 'absolute', top: '8px', right: '8px' }}>
           <IconButton onClick={() => handleDelete(ticketId)}>
-              <CloseIcon style={{ color: 'red' }} />
+              <CloseIcon style={{ color: '#42a5f5' }} />
           </IconButton> 
         </div>
       </Paper>

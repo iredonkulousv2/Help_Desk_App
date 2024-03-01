@@ -25,19 +25,20 @@ const DashboardBar = ({setSelectedStatus}) => {
       <AppBar position="static">
         <Toolbar>
           <AdminPanelSettingsIcon />
+          
           {!isMobile ?
             <Typography variant="h6" component="div" sx={{ flexGrow: 1, marginLeft: 1, fontSize: '1.2rem' }}>
             Admin Dashboard
           </Typography> : 
 
-            <div style={{ fontSize: '1.2rem', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', }}>
+            <div style={{ fontSize: '0.8rem', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', }}>
             {['New','In Progress', 'Resolved', 'All']
               .map(text => (
                 <Button variant="contained"
                 color="secondary" 
                 key={text}
                 sx={{
-                  ml: 2,
+                  ml: 1,
                   backgroundColor: 'transparent', 
                   border: 'none',
                   boxShadow: 'none',

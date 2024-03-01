@@ -24,6 +24,7 @@ const TicketEditForm: React.FC<TicketEditFormProps> = ({ ticket, closeModal, get
   
   const handleTicketSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+   
     try {
       const data = await axios.patch(`/api/tickets/${id}`, editData,   
       {
@@ -48,31 +49,31 @@ const TicketEditForm: React.FC<TicketEditFormProps> = ({ ticket, closeModal, get
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        bgcolor: 'background.paper',
         boxShadow: 24,
         p: 3,
-        minWidth: 400,
-        maxWidth: '80%',
+        minWidth: '20rem',
+        maxWidth: '30rem',
         borderRadius: 4,
+        backgroundColor: '#e3f2fd',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
-        <h1 style={{ marginRight: '30px', color: '#333' }}>Edit Ticket {ticket.id}</h1>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
+        <h1>Edit Ticket {ticket.id}</h1>
         <IconButton color="primary" onClick={closeModal}>
-          <CloseIcon style={{ color: 'red' }} />
+          <CloseIcon style={{ color: '#42a5f5' }} />
         </IconButton>
       </div> 
-      <Card style={{ width: '25rem', padding: '20px', display: 'flex', flexDirection: 'column',  justifyContent: 'space-between', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)', borderRadius: '10px' }} variant='outlined'>
-        <div style={{ textAlign: 'left', marginBottom: '20px' }}>
+      <Card style={{ width: '20rem', padding: '1rem', display: 'flex', flexDirection: 'column',  justifyContent: 'space-between', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)', borderRadius: '10px' }} variant='outlined'>
+        <div style={{ textAlign: 'left', marginBottom: '2rem' }}>
           <p><strong>Name:</strong> {ticket?.name}</p>
           <p><strong>Email:</strong> {ticket?.email}</p>
           <p><strong>Description:</strong></p>
-          <div style={{ maxHeight: '15rem', overflowY: 'auto', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }}>
+          <div style={{ maxHeight: '15rem', overflowY: 'auto', padding: '1rem', border: '1px solid #ccc', borderRadius: '5px', width: '90%' }}>
             {ticket?.description}
           </div>
         </div>
 
-        <form onSubmit={handleTicketSubmit} style={{ width: '100%' }}>
+        <form onSubmit={handleTicketSubmit} style={{ width: '90%' }}>
           <TextField name='response' label='Response' multiline rows={5} fullWidth required onChange={handleInputChange} value={editData.response} style={{ marginBottom: '20px' }} />
           <InputLabel>Status</InputLabel>
           <Select 
@@ -81,7 +82,7 @@ const TicketEditForm: React.FC<TicketEditFormProps> = ({ ticket, closeModal, get
             required 
             onChange={handleInputChange} 
             value={editData.status === '' ? ticket.status : editData.status} 
-            style={{ marginBottom: '20px' }}
+            style={{ marginBottom: '2rem' }}
           >
               {ticket.status && (
                 <MenuItem value={ticket.status}>{ticket.status}</MenuItem>
