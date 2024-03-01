@@ -1,10 +1,10 @@
-# fly.toml app configuration file generated for help-desk-app2 on 2024-02-29T20:55:07-05:00
+# fly.toml app configuration file generated for help-desk-app2 on 2024-03-01T12:38:31-05:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
 app = 'help-desk-app2'
-primary_region = 'ewr'
+primary_region = 'bos'
 
 [build]
 

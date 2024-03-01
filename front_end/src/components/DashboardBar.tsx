@@ -1,20 +1,13 @@
 import { AppBar, Box, Toolbar, Typography, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-import {useState, useEffect} from 'react'
+import LogoutIcon from '@mui/icons-material/Logout';
+import useIsMobile from '../utils/useIsMobile';
 
 
 const DashboardBar = ({setSelectedStatus}) => {
-  const [isMobile, setIsMobile] = useState<boolean>(false);
-  
-  useEffect(() => {
-    
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 600);
-    };
-    window.addEventListener('resize', handleResize);
-    handleResize();
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+
+  const isMobile = useIsMobile();
 
   const handleClick = (status: string) => {
     setSelectedStatus(status);
@@ -24,12 +17,17 @@ const DashboardBar = ({setSelectedStatus}) => {
     <Box sx={{ width: '100vw' }}>
       <AppBar position="static">
         <Toolbar>
-          <AdminPanelSettingsIcon />
-          
+          {!isMobile ?
+            <AdminPanelSettingsIcon />:
+            <Link to='/' style={{ textDecoration: 'none', color: '#fff' }}>
+              <LogoutIcon/>
+            </Link>
+          }
+
           {!isMobile ?
             <Typography variant="h6" component="div" sx={{ flexGrow: 1, marginLeft: 1, fontSize: '1.2rem' }}>
             Admin Dashboard
-          </Typography> : 
+            </Typography> : 
 
             <div style={{ fontSize: '0.8rem', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', }}>
             {['New','In Progress', 'Resolved', 'All']

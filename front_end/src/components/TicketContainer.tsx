@@ -6,12 +6,13 @@ import { Ticket } from '../types';
 import StatusCard from './StatusCard';
 import SideBar from './Sidebar';
 import { Typography } from '@mui/material';
+import useIsMobile from '../utils/useIsMobile';
 
 const TicketContainer = ({selectedStatus, setSelectedStatus}) => {
   const [tickets, setTickets] = useState<Ticket[]>([]);
-  const [isMobile, setIsMobile] = useState<boolean>(false); 
   const navigate = useNavigate();
   const location = useLocation();
+  const isMobile = useIsMobile();
 
   const fetchData = async () => {
     try {
@@ -35,12 +36,7 @@ const TicketContainer = ({selectedStatus, setSelectedStatus}) => {
 
   useEffect(() => {
     getData();
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 600);
-    };
-    window.addEventListener('resize', handleResize);
-    handleResize(); 
-    return () => window.removeEventListener('resize', handleResize);
+  
   }, []);
 
   const newTickets = tickets.filter(ticket => ticket.status === 'New');
