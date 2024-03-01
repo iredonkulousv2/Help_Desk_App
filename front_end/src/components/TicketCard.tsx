@@ -29,7 +29,7 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket, getData }) => {
   };
 
   const handleDelete = async (id: string) => {
-    console.log('inside handledelete', location.state.id)
+   
     try {
       const data = await axios.delete(`/api/tickets/${id}`,    
       {

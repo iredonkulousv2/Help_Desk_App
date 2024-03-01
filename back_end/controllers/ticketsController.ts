@@ -3,15 +3,21 @@ import { Request, Response } from 'express';
 import prisma from '../utils/db';
 
 const createTicket = async (req: Request, res: Response ) => {
-   const { name, email, description } = req.body
-    const newTicket = await prisma.ticket.create({
-        data: {
-            name,
-            email,
-            description
-        }
-    })
-    res.json(newTicket).status(200)
+   try {
+       const { name, email, description } = req.body
+        const newTicket = await prisma.ticket.create({
+            data: {
+                name,
+                email,
+                description
+            }
+        })
+        return res.json(newTicket).status(200)
+
+   } catch(error) {
+        console.error("Error creating ticket:", error);
+        return res.status(500).json({ error: "Internal server error" });
+   }
 }
 
 const getAllTickets = async (req: Request, res: Response) => {
@@ -36,7 +42,9 @@ const getTicketById = async (req: Request, res: Response) => {
             }
         });
 
-        if (!ticket) return res.status(404).json({ message: 'Ticket not found' });
+        if (!ticket) {
+            return res.status(404).json({ message: 'Ticket not found' });
+        }
         
         return res.json(ticket);
     } catch (error) {
